@@ -22,21 +22,16 @@
             <div class="col-6 col-md-4 col-lg-3 text-center">
                 <div class="card shadow-sm border-danger">
                     <div class="card-body">
-                        <h2>Title of the Card</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-6 col-md-4 col-lg-3 text-center">
-                <div class="card shadow-sm border-danger">
-                    <div class="card-body">
-                        <h2>Title of the Card</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        <div>
+                            <img src="{{ pokedata.sprites.front_default }}" alt="{{ pokedata.name }}-image">
+                        </div>
+                        <div class="title">
+                            <h2>{{ pokedata.name }}</h2>
+                        </div>
+                        <div class="body">
+                            <h6>height: {{ pokedata.height }}</h6>
+                            <h6>weight: {{ pokedata.weight }}</h6>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -44,10 +39,12 @@
             <div class="col-6 col-md-4 col-lg-3 text-center">
                 <div class="card shadow-sm border-danger">
                     <div class="card-body">
-                        <h2>Title of the Card</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        <div class="title">
+                            <h2>Title of the Card</h2>
+                        </div>
+                        <div class="body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -55,13 +52,29 @@
             <div class="col-6 col-md-4 col-lg-3 text-center">
                 <div class="card shadow-sm border-danger">
                     <div class="card-body">
-                        <h2>Title of the Card</h2>
-                    </div>
-                    <div class="card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        <div class="title">
+                            <h2>Title of the Card</h2>
+                        </div>
+                        <div class="body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <div class="title">
+                            <h2>Title of the Card</h2>
+                        </div>
+                        <div class="body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
         </div>
