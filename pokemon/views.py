@@ -8,7 +8,7 @@ import requests
 def home(request):
     # try doing a call to the API
     # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
-    batch_url = "https://pokeapi.co/api/v2/pokemon?" #this is for batch pokemon API calls
+    batch_url = "https://pokeapi.co/api/v2/pokemon?limit=10" #this is for batch pokemon API calls
     # res = requests.get(url)
     res = requests.get(batch_url)
 
@@ -26,14 +26,16 @@ def home(request):
                 print(response.text)
             else:
                 new_data = response.json()
-                animated_gif = new_data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
+                animated_gif = new_data['sprites']['versions']['generation-v']['black-white']['animated']['front_default'] #this is to extract the animated GIFs
                 final_data.append(new_data)
                 animated_gifs.append(animated_gif)
 
+        # print(final_data)
+        print(animated_gifs)
         # animated_gif = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
        
         context = {
             'pokedata': final_data,
-            'gifdata': animated_gifs,
+            'gifdata': animated_gifs
         }
         return render(request, 'pokemon/home.html', context)
