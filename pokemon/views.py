@@ -1,11 +1,15 @@
-import re
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 
 # this is the default home page
 def home(request):
-    # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
+    return render(request, 'pokemon/home.html', {})
+
+
+def load_pokedex(request):
+    request.session.flush()
+     # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
 
     #this is for batch pokemon API calls
     batch_url = "https://pokeapi.co/api/v2/pokemon?limit=10" 
@@ -39,13 +43,17 @@ def home(request):
                 final_data.append(new_data)    
                 animated_gifs.append(animated_gif)      
        
-        # pass data as context object
-        context = {
-            'pokedata': final_data,
-            'gifdata': animated_gifs
+        # pass data to sessions
+        request.session['pokedata'] = {
+            'pokemondata': final_data
         }
-        return render(request, 'pokemon/home.html', context)
 
+        request.session['animated'] = {
+            'gif': animated_gifs
+        }
 
-def load_pokedex(request):
-    
+        # context = {
+        #     'pokedata': final_data,
+        #     'gifdata': animated_gifs
+        # }
+        return redirect('pokemon:home')

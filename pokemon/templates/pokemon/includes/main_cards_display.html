@@ -1,9 +1,13 @@
 {% load zip %}
 
-{% for data, gif in pokedata|zip:gifdata %}
+{% if request.session.pokedata.pokemondata %}
+    {% for data, gif in request.session.pokedata.pokemondata|zip:request.session.animated.gif %}
 
         <div class="col-6 col-md-4 col-lg-3 text-center">
             {% include 'pokemon/includes/pokemon_card.html' %}
         </div>
         
-{% endfor %}
+    {% endfor %}
+{% else %}
+    {% include 'pokemon/includes/empty_state.html' %}
+{% endif %}
