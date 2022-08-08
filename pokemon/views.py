@@ -31,7 +31,7 @@ def home(request):
                 animated_gifs.append(animated_gif)
 
         # print(final_data)
-        print(animated_gifs)
+        # print(animated_gifs)
         # animated_gif = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
        
         context = {
