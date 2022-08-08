@@ -4,6 +4,67 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>This is the home content for the user</h1>
+    <div class="hero-section text-center py-4">
+        <div class="hero-img">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/International_Pok%C3%A9mon_logo.svg" alt="pokemon-logo" width="300">
+        </div>
+        <div class="hero-body">
+            <h5>Build your own Team!</h5>
+        </div>
+    </div>
+    <div class="main-content container overflow-hidden">
+        <!-- show here the pokemon cards from the PokeAPI -->
+        <div class="cardheader"></div>
+
+        <!-- insert here the cards -->
+        <div class="row p-4 g-2">
+
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <h2>Title of the Card</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <h2>Title of the Card</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <h2>Title of the Card</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-4 col-lg-3 text-center">
+                <div class="card shadow-sm border-danger">
+                    <div class="card-body">
+                        <h2>Title of the Card</h2>
+                    </div>
+                    <div class="card-body">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae, quia.</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 {% endblock content %}
 
