@@ -25,13 +25,11 @@ def home(request):
             if response.status_code != 200:
                 print(response.text)
             else:
-                print("FETCHING DONE")
                 new_data = response.json()
                 animated_gif = new_data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
                 final_data.append(new_data)
                 animated_gifs.append(animated_gif)
- 
-        # print(final_data)
+
         # animated_gif = data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']
        
         context = {
