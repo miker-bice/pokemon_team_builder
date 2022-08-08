@@ -23,7 +23,8 @@
                 <div class="card shadow-sm border-danger">
                     <div class="card-body">
                         <div>
-                            <img src="{{ pokedata.sprites.front_default }}" alt="{{ pokedata.name }}-image">
+                            {% comment %} <img src="{{ pokedata.sprites.front_default }}" alt="{{ pokedata.name }}-image"> {% endcomment %}
+                            <img src="{{ gifdata }}" alt="{{ pokedata.name }}-image">
                         </div>
                         <div class="title">
                             <h2>{{ pokedata.name }}</h2>
@@ -31,6 +32,11 @@
                         <div class="body">
                             <h6>height: {{ pokedata.height }}</h6>
                             <h6>weight: {{ pokedata.weight }}</h6>
+                            <h6>Type: 
+                            {% for type in pokedata.types %}
+                                {{ type.type.name }} |
+                            {% endfor %}
+                            </h6>
                         </div>
                     </div>
                 </div>
