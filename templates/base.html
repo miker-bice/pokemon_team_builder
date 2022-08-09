@@ -16,10 +16,16 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet"> -->
 </head> 
 <body>
+    <!-- here goes the navbar -->
     {% include 'includes/navbar_component.html' %}
+
+    <!-- here goes the main content -->
     <div>
         {% block content %}{% endblock content %}
     </div>
+
+    <!-- here goes the footer -->
+    {% include 'includes/footer_component.html' %}
     
 </body>
 
