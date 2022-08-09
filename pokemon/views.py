@@ -57,3 +57,7 @@ def load_pokedex(request):
         #     'gifdata': animated_gifs
         # }
         return redirect('pokemon:home')
+
+
+def my_teams(request):
+    return render(request, 'pokemon/my_teams.html', {})
