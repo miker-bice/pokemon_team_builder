@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Pokemon Team Builder | My Teams</title>
+    <title>My Teams</title>
 {% endblock title %}
 
 {% block content %}
@@ -9,7 +9,7 @@
         <div class="header text-center">
             <h2>YOUR TEAMS</h2>
             <p>Start building your dream team</p>
-            <a href="#" class="btn btn-dark btn-md">Create a team</a>
+            <a href="{% url 'pokemon:create-team' %}" class="btn btn-dark btn-md">Create a team</a>
             <hr class="mx-auto" width="100">
         </div>
         <div class="main-content">

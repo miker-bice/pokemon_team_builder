@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Create a Team</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="create-team container p-4">
+        
+        <div class="team-body">
+           
+            <!-- insert here the slots and the cards you acquired from randomization -->
+            <div class="your-team-cards py-3">
+                <h4 class="text-center">Here are your Pokemons</h4>
+                <hr class="mx-auto" width="70">
+                <div class="d-grid container">
+                    <a href="#" class="btn btn-dark">Generate Pokemons</a>
+                </div>
+                <div class="team-cards">
+                    <!-- insert here the team_slot_card -->
+                    <div class="row p-4 g-2">
+                        <div class="card col-12 col-lg-6 shadow-sm border-warning">
+                            <div class="card-body d-flex align-items-center">
+                                <div class="pokemon-image">
+                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif" alt="pokemon-img">
+                                </div>
+                                <div class="pokemon-stats ps-4">
+                                    <h5>Sample Pokemon</h5>
+                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, tempora?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="header text-center">
+                <!-- <h3>Generate Team</h3> -->
+                <!-- <p>Have your pokemons generated first</p> -->
+            </div>
+            <div class="team-form">
+                <form action="#" class="px-4">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="team_title" class="form-label">Team Title</label>
+                      <input type="text" class="form-control" id="team_title" name="team_title">
+                    </div>
+                    <div class="mb-3">
+                      <label for="team_desc" class="form-label">Description</label>
+                      <input type="text" class="form-control" id="team_desc" name="team_desc">
+                    </div>
+                    <button type="submit" class="btn btn-dark px-4">Save your Team</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

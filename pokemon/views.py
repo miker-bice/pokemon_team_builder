@@ -60,4 +60,10 @@ def load_pokedex(request):
 
 
 def my_teams(request):
+    # query the database here
+    # get all the existing teams of a given user
     return render(request, 'pokemon/my_teams.html', {})
+
+
+def create_team(request):
+    return render(request, 'pokemon/create_team.html', {})
