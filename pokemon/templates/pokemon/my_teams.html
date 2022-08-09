@@ -13,11 +13,13 @@
             <hr class="mx-auto" width="100">
         </div>
         <div class="main-content">
-            {% if teamdata %}
-                
-            {% else %}
+            {% comment %} {% if teamdata %} {% endcomment %}
+                <div class="row p-4 g-2">
+                    {% include 'pokemon/includes/team_cards.html' %}
+                </div>
+            {% comment %} {% else %}
                 {% include 'pokemon/includes/empty_state_team.html' %}
-            {% endif %}
+            {% endif %} {% endcomment %}
         </div>
         
     </div>
