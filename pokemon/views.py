@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .randomize import randomize
+from .randomize import randomize, single_randomize
 import requests
 
 
@@ -9,7 +9,7 @@ def home(request):
 
 
 def load_pokedex(request):
-    request.session.flush()
+    # request.session.flush()
 
      # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
 
@@ -68,9 +68,11 @@ def my_teams(request):
 
 
 def create_team(request):
+    
     return render(request, 'pokemon/create_team.html', {})
 
 
+# this is for generating a line up for team 
 def generate_team(request):
     # flush the sessions
     request.session.flush()
@@ -104,6 +106,10 @@ def generate_team(request):
 
     # print(team_data)             
     # pass data to sessions
+    request.session['listresult'] = {
+        'list_result': list_result
+    }
+
     request.session['teamdata'] = {
         'lineup': team_data
     }
@@ -113,4 +119,49 @@ def generate_team(request):
     }
 
 
+    return redirect('pokemon:create-team')
+
+
+
+# for reshuffling a specific pokemon in team creation
+def reshuffle(request, data_id):
+    
+    url = "https://pokeapi.co/api/v2/pokemon/"
+
+    original = request.session['listresult']['list_result']
+    # fetch the new team lineup
+    new_lineup = single_randomize(original, data_id)
+
+    team_data = []
+    team_gifs = []
+
+    # generate new data
+    for number in new_lineup:
+        response = requests.get(url + str(number))
+    
+
+        if response.status_code != 200:
+            print(response.text)
+        else:
+            # GET specific data of a pokemon
+            new_data = response.json()
+
+            #this is to extract the animated GIFs
+            animated_gif = new_data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']              
+
+            #append the pokemon data and GIFs to array
+            team_data.append(new_data)    
+            team_gifs.append(animated_gif)
+
+    print(team_gifs)
+    # save data to session
+    request.session['teamdata'] = {
+        'lineup': team_data
+    }
+
+    request.session['teamgif'] = {
+        'gif': team_gifs
+    }
+    
+    
     return redirect('pokemon:create-team')

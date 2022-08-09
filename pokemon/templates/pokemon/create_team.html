@@ -22,7 +22,7 @@
                     <div class="row p-4 g-2">
                         {% if request.session.teamdata.lineup %}
                             {% for data, gif in request.session.teamdata.lineup|zip:request.session.teamgif.gif %}
-                            <div class="card col-12 col-lg-6 shadow-sm border-warning">
+                            <div class="col-12 col-lg-6">
                                 {% include 'pokemon/includes/team_pokemon_card.html' %}
                             </div>
                             {% endfor %}

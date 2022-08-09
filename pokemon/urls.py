@@ -9,4 +9,5 @@ urlpatterns = [
     path('my-teams/', views.my_teams, name='my-teams'),
     path('create-team/', views.create_team, name='create-team'),
     path('generate-team/', views.generate_team, name='generate-team'),
+    path('reshuffle/<int:data_id>', views.reshuffle, name='reshuffle'),
 ]

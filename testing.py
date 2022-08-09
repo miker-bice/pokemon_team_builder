@@ -1,5 +1,15 @@
-url = "https://pokeapi.co/api/v2/pokemon/"
+import random
 
-number = 20
+original = [1, 2, 3, 4, 5, 6]
+print(original)
+data_id = 4
 
-print(url + str(number))
+new_random = random.randint(1, 100)
+
+index = original.index(data_id)
+print(index)
+
+original[index] = new_random
+print(original)
+
+
