@@ -1,5 +1,5 @@
-import random
+url = "https://pokeapi.co/api/v2/pokemon/"
 
-res = random.sample(range(1, 50), 6)
+number = 20
 
-print(str(res))
+print(url + str(number))

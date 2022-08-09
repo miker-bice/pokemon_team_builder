@@ -10,6 +10,7 @@ def home(request):
 
 def load_pokedex(request):
     request.session.flush()
+
      # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
 
     #this is for batch pokemon API calls
@@ -71,6 +72,45 @@ def create_team(request):
 
 
 def generate_team(request):
-    list_result = randomize(11)
-    print(str(list_result))
+    # flush the sessions
+    request.session.flush()
+
+    url = "https://pokeapi.co/api/v2/pokemon/"
+
+    list_result = randomize(5)
+    list_result.append(25)
+    print("these are the results: ", str(list_result))
+    team_data = []
+    team_gifs = []
+
+    # get the data of number from the PokeAPI   
+    # iterate over each urls
+    for number in list_result:
+        response = requests.get(url + str(number))
+        
+
+        if response.status_code != 200:
+            print(response.text)
+        else:
+            # GET specific data of a pokemon
+            new_data = response.json()
+
+            #this is to extract the animated GIFs
+            animated_gif = new_data['sprites']['versions']['generation-v']['black-white']['animated']['front_default']              
+
+            #append the pokemon data and GIFs to array
+            team_data.append(new_data)    
+            team_gifs.append(animated_gif)
+
+    # print(team_data)             
+    # pass data to sessions
+    request.session['teamdata'] = {
+        'lineup': team_data
+    }
+
+    request.session['teamgif'] = {
+        'gif': team_gifs
+    }
+
+
     return redirect('pokemon:create-team')

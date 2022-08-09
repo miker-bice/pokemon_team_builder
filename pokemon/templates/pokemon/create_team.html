@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load zip %}
 
 {% block title %}
     <title>Create a Team</title>
@@ -19,17 +20,15 @@
                 <div class="team-cards">
                     <!-- insert here the team_slot_card -->
                     <div class="row p-4 g-2">
-                        <div class="card col-12 col-lg-6 shadow-sm border-warning">
-                            <div class="card-body d-flex align-items-center">
-                                <div class="pokemon-image">
-                                    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/146.gif" alt="pokemon-img">
-                                </div>
-                                <div class="pokemon-stats ps-4">
-                                    <h5>Sample Pokemon</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, tempora?</p>
-                                </div>
+                        {% if request.session.teamdata.lineup %}
+                            {% for data, gif in request.session.teamdata.lineup|zip:request.session.teamgif.gif %}
+                            <div class="card col-12 col-lg-6 shadow-sm border-warning">
+                                {% include 'pokemon/includes/team_pokemon_card.html' %}
                             </div>
-                        </div>
+                            {% endfor %}
+                        {% else %}
+                            
+                        {% endif %}
                     </div>
                 </div>
             </div>

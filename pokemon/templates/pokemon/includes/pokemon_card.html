@@ -3,7 +3,11 @@
     <div class="card-body">
         <div>
             <!-- <img src="{{ pokedata.sprites.front_default }}" alt="{{ pokedata.name }}-image"> -->
-            <img src="{{ gif }}" alt="{{ data.name }}-image">
+            {% if gif %}
+                <img src="{{ gif }}" alt="{{ data.name }}-image">
+            {% else %}
+                <img src="{{ data.sprites.front_default }}" alt="{{ data.name }}-image">
+            {% endif %}
         </div>
         <div class="title">
             <h2>{{ data.name }}</h2>
