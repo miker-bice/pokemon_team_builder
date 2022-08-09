@@ -1,11 +1,5 @@
-list1 = [{1}, {2}, {3}]
-sample = []
-for num in list1:
-    a = 'x'
-    joined_data = str(num) + a
-    sample.append(joined_data)
+import random
 
-print(sample)
+res = random.sample(range(1, 50), 6)
 
-
-
+print(str(res))

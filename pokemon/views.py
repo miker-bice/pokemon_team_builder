@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .randomize import randomize
 import requests
 
 
@@ -67,3 +68,9 @@ def my_teams(request):
 
 def create_team(request):
     return render(request, 'pokemon/create_team.html', {})
+
+
+def generate_team(request):
+    list_result = randomize(11)
+    print(str(list_result))
+    return redirect('pokemon:create-team')

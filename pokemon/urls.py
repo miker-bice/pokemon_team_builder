@@ -8,4 +8,5 @@ urlpatterns = [
     path('load-pokedex/', views.load_pokedex, name='load-pokedex'),
     path('my-teams/', views.my_teams, name='my-teams'),
     path('create-team/', views.create_team, name='create-team'),
+    path('generate-team/', views.generate_team, name='generate-team'),
 ]
