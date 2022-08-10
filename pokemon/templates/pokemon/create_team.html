@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load zip %}
+
+{% block title %}
+    <title>Create a Team</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="create-team container p-4">
+        
+        <div class="team-body">
+           
+            <!-- insert here the slots and the cards you acquired from randomization -->
+            <div class="your-team-cards py-3">
+                <h4 class="text-center">Here are your Pokemons</h4>
+                <hr class="mx-auto" width="70">
+                <div class="d-grid container">
+                    <a href="{% url 'pokemon:generate-team' %}" class="btn btn-dark">Generate Pokemon Team</a>
+                </div>
+                <div class="team-cards">
+                    <!-- insert here the team_slot_card -->
+                    <div class="row p-4 g-2">
+                        {% if request.session.teamdata.lineup %}
+                            {% for data, gif in request.session.teamdata.lineup|zip:request.session.teamgif.gif %}
+                            <div class="col-12 col-lg-6">
+                                {% include 'pokemon/includes/team_pokemon_card.html' %}
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="header text-center">
+                <!-- <h3>Generate Team</h3> -->
+                <!-- <p>Have your pokemons generated first</p> -->
+            </div>
+            <div class="team-form">
+                <form action="{% url 'pokemon:save-team' %}" method="POST" class="px-4">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="team_name" class="form-label">Team name</label>
+                      <input type="text" class="form-control" id="team_name" name="team_name" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="team_desc" class="form-label">Description</label>
+                      <textarea type="text" class="form-control" id="team_desc" name="team_desc" required></textarea>
+                    </div>
+                    <!-- hidden values -->
+                    {% for number in request.session.listresult.list_result %}
+                         <input type="hidden" name="slot_{{ forloop.counter0 }}" value="{{ number }}">
+                    {% endfor %}
+                    <button type="submit" class="btn btn-dark px-4">Save your Team</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

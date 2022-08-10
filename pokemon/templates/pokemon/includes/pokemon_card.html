@@ -1,0 +1,27 @@
+<!-- INSERT CONTEXT DATA HERE -->
+<div class="card shadow-sm border-warning h-100">
+    <div class="card-body">
+        <div>
+            <!-- <img src="{{ pokedata.sprites.front_default }}" alt="{{ pokedata.name }}-image"> -->
+            {% if gif %}
+                <img src="{{ gif }}" alt="{{ data.name }}-image">
+            {% else %}
+                <img src="{{ data.sprites.front_default }}" alt="{{ data.name }}-image">
+            {% endif %}
+        </div>
+        <div class="title">
+            <h2>{{ data.name }}</h2>
+            <hr class="my-1 mx-auto" width="80">
+        </div>
+        <div class="body">
+            <p class="fs-6">
+               <em>height: </em>{{ data.height }} <br/>
+                <em>weight: </em>{{ data.weight }} <br/>
+                <em>type:</em>
+                {% for type in data.types %}
+                {{ type.type.name }} |
+                {% endfor %}
+            </p>
+        </div>
+    </div>
+</div>
