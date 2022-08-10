@@ -42,12 +42,16 @@
                     {% csrf_token %}
                     <div class="mb-3">
                       <label for="team_name" class="form-label">Team name</label>
-                      <input type="text" class="form-control" id="team_name" name="team_name">
+                      <input type="text" class="form-control" id="team_name" name="team_name" required>
                     </div>
                     <div class="mb-3">
                       <label for="team_desc" class="form-label">Description</label>
-                      <input type="text" class="form-control" id="team_desc" name="team_desc">
+                      <input type="text" class="form-control" id="team_desc" name="team_desc" required>
                     </div>
+                    <!-- hidden values -->
+                    {% for number in request.session.listresult.list_result %}
+                         <input type="hidden" name="slot_{{ forloop.counter0 }}" value="{{ number }}">
+                    {% endfor %}
                     <button type="submit" class="btn btn-dark px-4">Save your Team</button>
                 </form>
             </div>

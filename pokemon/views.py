@@ -153,8 +153,12 @@ def reshuffle(request, data_id):
             team_data.append(new_data)    
             team_gifs.append(animated_gif)
 
-    print(team_gifs)
+    print(new_lineup)
     # save data to session
+    request.session['listresult'] = {
+        'list_result': new_lineup
+    }
+
     request.session['teamdata'] = {
         'lineup': team_data
     }
