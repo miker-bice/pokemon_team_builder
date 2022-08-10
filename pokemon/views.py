@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .randomize import randomize, single_randomize
+from .models import Team
 import requests
 
 
@@ -167,5 +168,38 @@ def reshuffle(request, data_id):
         'gif': team_gifs
     }
     
-    
     return redirect('pokemon:create-team')
+
+
+# function for saving a generated team to database
+def save_team(request):
+    # simple validation
+    if request.method == 'POST':
+        # get data from the form
+        team_name = request.POST['team_name']
+        description = request.POST['team_desc']
+        slot_1 = request.POST['slot_1']
+        slot_2 = request.POST['slot_2']
+        slot_3 = request.POST['slot_3']
+        slot_4 = request.POST['slot_4']
+        slot_5 = request.POST['slot_5']
+        slot_6 = request.POST['slot_6']
+
+        # create a new save item
+        new_team = Team(
+            team_name = team_name,
+            description = description,
+            slot_1 = slot_1,
+            slot_2 = slot_2,
+            slot_3 = slot_3,
+            slot_4 = slot_4,
+            slot_5 = slot_5,
+            slot_6 = slot_6
+        )
+
+        # save to database
+        new_team.save()
+    else:
+        return redirect('pokemon:create-team')
+
+    return redirect('pokemon:my-teams')

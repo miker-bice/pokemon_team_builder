@@ -46,7 +46,7 @@
                     </div>
                     <div class="mb-3">
                       <label for="team_desc" class="form-label">Description</label>
-                      <input type="text" class="form-control" id="team_desc" name="team_desc" required>
+                      <textarea type="text" class="form-control" id="team_desc" name="team_desc" required></textarea>
                     </div>
                     <!-- hidden values -->
                     {% for number in request.session.listresult.list_result %}
