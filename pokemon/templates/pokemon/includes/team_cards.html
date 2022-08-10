@@ -1,7 +1,13 @@
-    <a href="#" class="col-12 col-lg-6 text-decoration-none">
-        <div>
-            {% include 'pokemon/includes/team_card.html' %}
-        </div>
+    <a href="#" class="col-12 col-lg-6 btn btn-dark shadow-sm h-100 text-start py-2">
+       
+            {% comment %} {% include 'pokemon/includes/team_card.html' %} {% endcomment %}
+           
+                <div class="card-body">
+                    <h3>{{ data.team_name }}</h3>
+                    <p>{{ data.description|truncatechars:35 }}</p>
+                </div>
+       
+     
     </a>
 
     
