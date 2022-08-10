@@ -1,0 +1,25 @@
+
+<div class="card h-100 shadow-sm border-warning">
+    <div class="card-body row align-items-center">
+        <div class="pokemon-image col-4 justify-self-center ps-4">
+                {% if gif %}
+                    <img src="{{ gif }}" alt="{{ data.name }}-image">
+                {% else %} 
+                    <img src="{{ data.sprites.front_default }}" alt="{{ data.name }}-image">
+                {% endif %}
+        </div>
+        <div class="pokemon-stats ps-4 col-8">
+            <h5>{{ data.name }}</h5>
+            <p>
+                <em>type:</em>
+                {% for type in data.types %}
+                {{ type.type.name }} |
+                {% endfor %}
+            </p>
+            <form action="{% url 'pokemon:reshuffle' data.id %}">
+                {% csrf_token %}
+                <button id="reshuffle" type="submit" class="btn btn-sm btn-outline-dark">reshuffle</button>
+            </form>
+        </div>
+    </div>
+</div>

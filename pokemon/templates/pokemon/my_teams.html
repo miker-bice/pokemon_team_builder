@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>My Teams</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="my-teams container p-4">
+        <div class="header text-center">
+            <h2>YOUR TEAMS</h2>
+            <p>Start building your dream team</p>
+            <a href="{% url 'pokemon:create-team' %}" class="btn btn-dark btn-md">Create a team</a>
+            <hr class="mx-auto" width="100">
+        </div>
+        <div class="main-content">
+            {% if team_data %}
+                <div class="row py-4 g-2">
+                {% for data in team_data %}
+                    {% include 'pokemon/includes/team_cards.html' %}
+                {% endfor %}
+                </div>
+            {% else %}
+                {% include 'pokemon/includes/empty_state_team.html' %}
+            {% endif %} 
+        </div>
+        
+    </div>
+    
+{% endblock content %}
