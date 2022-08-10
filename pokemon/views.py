@@ -10,7 +10,7 @@ def home(request):
 
 
 def load_pokedex(request):
-    request.session.flush()
+    # request.session.flush()
 
      # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
 
@@ -80,7 +80,7 @@ def create_team(request):
 # this is for generating a line up for team 
 def generate_team(request):
     # flush the sessions
-    request.session.flush()
+    # request.session.flush()
 
     url = "https://pokeapi.co/api/v2/pokemon/"
 
@@ -130,7 +130,7 @@ def generate_team(request):
 
 # for reshuffling a specific pokemon in team creation
 def reshuffle(request, data_id):
-    
+
     url = "https://pokeapi.co/api/v2/pokemon/"
 
     original = request.session['listresult']['list_result']
@@ -203,6 +203,11 @@ def save_team(request):
 
         # save to database
         new_team.save()
+
+        # delete session keys
+        del request.session['teamdata']
+        del request.session['teamgif']
+
     else:
         return redirect('pokemon:create-team')
 
