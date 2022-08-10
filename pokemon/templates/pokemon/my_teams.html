@@ -14,11 +14,11 @@
         </div>
         <div class="main-content">
             {% if team_data %}
+                <div class="row py-4 g-2">
                 {% for data in team_data %}
-                <div class="row py-2 g-2">
                     {% include 'pokemon/includes/team_cards.html' %}
-                </div>
                 {% endfor %}
+                </div>
             {% else %}
                 {% include 'pokemon/includes/empty_state_team.html' %}
             {% endif %} 
