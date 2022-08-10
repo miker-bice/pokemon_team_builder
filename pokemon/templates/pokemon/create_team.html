@@ -38,7 +38,7 @@
                 <!-- <p>Have your pokemons generated first</p> -->
             </div>
             <div class="team-form">
-                <form action="#" class="px-4">
+                <form action="{% url 'pokemon:save-team' %}" method="POST" class="px-4">
                     {% csrf_token %}
                     <div class="mb-3">
                       <label for="team_name" class="form-label">Team name</label>

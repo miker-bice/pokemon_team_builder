@@ -10,7 +10,7 @@ def home(request):
 
 
 def load_pokedex(request):
-    # request.session.flush()
+    request.session.flush()
 
      # url = "https://pokeapi.co/api/v2/pokemon/mewtwo" #this is for single pokemon API calls
 
@@ -64,8 +64,12 @@ def load_pokedex(request):
 
 def my_teams(request):
     # query the database here
+    all_team_data = Team.objects.all().order_by('id')
+    context = {
+        'team_data': all_team_data
+    }
     # get all the existing teams of a given user
-    return render(request, 'pokemon/my_teams.html', {})
+    return render(request, 'pokemon/my_teams.html', context)
 
 
 def create_team(request):
@@ -178,23 +182,23 @@ def save_team(request):
         # get data from the form
         team_name = request.POST['team_name']
         description = request.POST['team_desc']
+        slot_0 = request.POST['slot_0']
         slot_1 = request.POST['slot_1']
         slot_2 = request.POST['slot_2']
         slot_3 = request.POST['slot_3']
         slot_4 = request.POST['slot_4']
         slot_5 = request.POST['slot_5']
-        slot_6 = request.POST['slot_6']
 
         # create a new save item
         new_team = Team(
             team_name = team_name,
             description = description,
+            slot_0 = slot_0,
             slot_1 = slot_1,
             slot_2 = slot_2,
             slot_3 = slot_3,
             slot_4 = slot_4,
-            slot_5 = slot_5,
-            slot_6 = slot_6
+            slot_5 = slot_5
         )
 
         # save to database
